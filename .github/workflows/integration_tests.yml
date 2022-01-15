@@ -1,0 +1,38 @@
+name: integration_tests
+
+on:
+  push:
+    # branches:
+    #   - main
+  pull_request:
+
+concurrency:
+  group: integration_tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: 3.8.5
+  PIP_VERSION: 20.2.4
+  REQUIREMENTS_PATH: "internal/buildscripts/packaging/tests/requirements.txt"
+  RESULT_PATH: "~/testresults"
+  GO_VERSION: 1.17.2
+
+jobs:
+  integration_tests:
+    name: integration_tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Pull in kong-plugin-signalfx
+        run: git submodule update --init --recursive --remote
+
+      - name: Install dependencies
+        run: |
+          sudo apt update && sudo apt install -yq python3-pip
+          pyenv local 3.5.2
+          pip3 install tox
+      
+      - name: Run integration tests
+        run: tox -e integration
