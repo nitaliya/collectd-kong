@@ -2,8 +2,8 @@ name: unit_tests
 
 on:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
   pull_request:
 
 concurrency:
