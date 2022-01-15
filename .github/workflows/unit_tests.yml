@@ -1,0 +1,31 @@
+name: unit_tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: unit_tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: 3.8.5
+  PIP_VERSION: 20.2.4
+  REQUIREMENTS_PATH: "internal/buildscripts/packaging/tests/requirements.txt"
+  RESULT_PATH: "~/testresults"
+  GO_VERSION: 1.17.2
+
+jobs:
+  unit_tests:
+    name: unit_tests
+    runs-on: ubuntu-latest
+    container:
+      image: themattrix/tox
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Run basic tests
+        run: tox -e py27,py35,py36,flake8
