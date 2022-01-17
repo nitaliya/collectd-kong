@@ -31,16 +31,16 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update && sudo apt install -yq python3-pip
-          sudo apt-get -y install bzip2 libedit-dev openssl1.0
+          sudo apt-get -y install bzip2 libedit-dev openssl
 
           curl https://pyenv.run | bash
           export PATH="~/.pyenv/bin:$PATH"
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
 
-          pyenv install 3.5.2
-          pyenv local 3.5.2
-          pip3 install tox
+          pyenv install 3.8.5
+          pyenv local 3.8.5
+          pip install tox
       
       - name: Run integration tests
         run: tox -e integration
