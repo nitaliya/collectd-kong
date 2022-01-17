@@ -42,7 +42,7 @@ jobs:
 
           pyenv install 3.5.2
           pyenv local 3.5.2
-          pip3 install tox
+          pip install tox
       
       - name: Run integration tests
         run: tox -e integration
