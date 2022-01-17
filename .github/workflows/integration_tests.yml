@@ -31,11 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update && sudo apt install -yq python3-pip
-          sudo apt-get -y install bzip2 libedit-dev openssl
-
-          CPPFLAGS=-I$HOME/openssl/include \
-          LDFLAGS=-L$HOME/openssl/lib \
-          SSH=$HOME/openssl
+          sudo apt-get -y install bzip2 libedit-dev openssl1.0
 
           curl https://pyenv.run | bash
           export PATH="~/.pyenv/bin:$PATH"
