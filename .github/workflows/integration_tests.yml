@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update && sudo apt install -yq python3-pip
-          sudo apt-get install bzip2 libreadline6 libreadline6-dev openssl
+          sudo apt-get install bzip2 libreadline6-dev openssl
 
           curl https://pyenv.run | bash
           export PATH="~/.pyenv/bin:$PATH"
