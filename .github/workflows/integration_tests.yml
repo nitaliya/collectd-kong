@@ -33,17 +33,13 @@ jobs:
           sudo apt update && sudo apt install -yq python3-pip
           sudo apt-get install bzip2 libedit-dev openssl
 
-          CPPFLAGS=-I$HOME/openssl/include \
-          LDFLAGS=-L$HOME/openssl/lib \
-          SSH=$HOME/openssl
-
           curl https://pyenv.run | bash
           export PATH="~/.pyenv/bin:$PATH"
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
 
-          pyenv install 3.5.2
-          pyenv local 3.5.2
+          pyenv install 3.10.2
+          pyenv local 3.10.2
           pip3 install tox
       
       - name: Run integration tests
