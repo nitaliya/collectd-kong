@@ -38,8 +38,8 @@ jobs:
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
 
-          pyenv install 3.8.5
-          pyenv local 3.8.5
+          pyenv install 3.8.10
+          pyenv local 3.8.10
           pip3 install tox
       
       - name: Run integration tests

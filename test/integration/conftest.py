@@ -22,9 +22,9 @@ def collectd_kong():
         kong = absjoin(__file__, '../../')
         plugin = absjoin(__file__, '../../kong_plugin.py')
         tgt = mkdtemp()
-        check_call([sys.executable, '-m', 'pip3', 'install', '--upgrade',
+        check_call([sys.executable, '-m', 'pip', 'install', '--upgrade',
                     '--target', tgt, kong])
-        check_call([sys.executable, '-m', 'pip3', 'install', '--upgrade',
+        check_call([sys.executable, '-m', 'pip', 'install', '--upgrade',
                     '--target', tgt + '/kong', '-r', pkgs])
         copyfile(plugin, tgt + '/kong_plugin.py')
         yield tgt
