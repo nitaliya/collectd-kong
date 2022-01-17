@@ -32,20 +32,7 @@ jobs:
         run: |
           sudo apt update && sudo apt install -yq python3-pip
           
-          test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-          test -d /home/linuxbrew/.linuxbrew && eval$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-          test -r ~/.bash_profile &&echo "eval \$($(brew --prefix)/bin/brew shellenv)" >> ~/.bash_profile
-          echo "eval \$($(brew --prefix)/bin/brew shellenv)" >> ~/.profile
-
-          brew update
-          brew install pyenv           
-          
-          eval "$(pyenv init -)"
-          eval "$(pyenv virtualenv-init -)"
-
-          pyenv install 3.5.2
-          pyenv local 3.5.2
-          pip3 install tox
+          sudo ls -la
       
       - name: Run integration tests
         run: tox -e integration
