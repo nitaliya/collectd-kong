@@ -41,6 +41,7 @@ def kong_image_and_version(request):
     dockerfile = BytesIO(bytes(dedent(r'''
         FROM kong:{version}
         RUN yum install -y epel-release
+        RUN yum -y update
         RUN yum install -y python-pip postgresql
         RUN pip install cqlsh
         WORKDIR /usr/local/share/lua/5.1/kong
