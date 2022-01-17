@@ -33,10 +33,6 @@ jobs:
           sudo apt update && sudo apt install -yq python3-pip
           sudo apt-get install bzip2 libedit-dev libssl1.0-dev
 
-          CPPFLAGS=-I$HOME/openssl/include \
-          LDFLAGS=-L$HOME/openssl/lib \
-          SSH=$HOME/openssl
-
           curl https://pyenv.run | bash
           export PATH="~/.pyenv/bin:$PATH"
           eval "$(pyenv init -)"
