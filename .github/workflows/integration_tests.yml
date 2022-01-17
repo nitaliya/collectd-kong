@@ -25,14 +25,22 @@ jobs:
       - name: Check out the codebase.
         uses: actions/checkout@v2
 
-      # - name: Pull in kong-plugin-signalfx
-      #   run: git submodule update --init --recursive --remote
+      - name: Pull in kong-plugin-signalfx
+        run: git submodule update --init --recursive --remote
 
       - name: Install dependencies
         run: |
           sudo apt update && sudo apt install -yq python3-pip
-          
-          sudo ls -la
+          sudo apt-get install bzip2 libreadline6-dev openssl
+
+          curl https://pyenv.run | bash
+          export PATH="~/.pyenv/bin:$PATH"
+          eval "$(pyenv init -)"
+          eval "$(pyenv virtualenv-init -)"
+
+          pyenv install 3.5.2
+          pyenv local 3.5.2
+          pip3 install tox
       
       - name: Run integration tests
         run: tox -e integration
