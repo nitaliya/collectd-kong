@@ -46,12 +46,12 @@ jobs:
         id: pyenv_installation
         uses: "gabrielfalcao/pyenv-action@v5"
         with:
-          default: 3.8.5
+          default: 3.7.5
           command: |
             pip install -U pip setuptools
 
-      - name: Create virtualenv for python 3.8.5
-        run: pyenv local 3.8.5 && python3 -mvenv .venv385
+      - name: Create virtualenv for python 3.7.5
+        run: pyenv local 3.7.5 && python3 -mvenv .venv375
 
       - name: Install dependencies
         run: pip install tox
