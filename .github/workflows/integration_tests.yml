@@ -46,7 +46,7 @@ jobs:
         id: pyenv_installation
         uses: "gabrielfalcao/pyenv-action@v5"
         with:
-          versions: 3.5.3
+          default: 3.5.3
           command: |
             pip install -U pip setuptools
             pip install tox
