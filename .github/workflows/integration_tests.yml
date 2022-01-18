@@ -28,33 +28,33 @@ jobs:
       - name: Pull in kong-plugin-signalfx
         run: git submodule update --init --recursive --remote
 
-      # - name: Install dependencies
-      #   run: |
-      #     sudo apt update && sudo apt install -yq python3-pip
-      #     sudo apt-get install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-
-      #     curl https://pyenv.run | bash
-      #     export PATH="~/.pyenv/bin:$PATH"
-      #     eval "$(pyenv init -)"
-      #     eval "$(pyenv virtualenv-init -)"
-
-      #     pyenv install 3.5.3
-      #     pyenv local 3.5.3
-      #     pip3 install tox
-
-      - name: setup pyenv
-        id: pyenv_installation
-        uses: "gabrielfalcao/pyenv-action@v5"
-        with:
-          default: 3.7.5
-          command: |
-            pip install -U pip setuptools
-
-      - name: Create virtualenv for python 3.7.5
-        run: pyenv local 3.7.5 && python3 -mvenv .venv375
-
       - name: Install dependencies
-        run: pip install tox
+        run: |
+          sudo apt update && sudo apt install -yq python3-pip
+          sudo apt-get install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+          curl https://pyenv.run | bash
+          export PATH="~/.pyenv/bin:$PATH"
+          eval "$(pyenv init -)"
+          eval "$(pyenv virtualenv-init -)"
+
+          pyenv install 3.5.3
+          pyenv local 3.5.3
+          pip3 install tox
+
+      # - name: setup pyenv
+      #   id: pyenv_installation
+      #   uses: "gabrielfalcao/pyenv-action@v5"
+      #   with:
+      #     default: 3.7.5
+      #     command: |
+      #       pip install -U pip setuptools
+
+      # - name: Create virtualenv for python 3.7.5
+      #   run: pyenv local 3.7.5 && python3 -mvenv .venv375
+
+      # - name: Install dependencies
+      #   run: pip install tox
       
       - name: Run integration tests
         run: tox -e integration
