@@ -20,7 +20,7 @@ env:
 jobs:
   integration_tests:
     name: integration_tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v2
