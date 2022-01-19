@@ -33,9 +33,8 @@ def collectd_kong():
 
 
 @pytest.fixture(scope='session',
-                params=(('1.0-centos', 38), ('0.15-centos', 38), ('0.14-centos', 38),
-                        ('0.13-centos', 38), ('0.12-centos', 35), ('0.11', 34)),
-                ids=('10', '015', '014', '013', '012', '011'))
+                params=(('1.0-centos', 38), ('0.15-centos', 38)),
+                ids=('10', '015'))
 def kong_image_and_version(request):
     version, shared_dict_line_number = request.param
     dockerfile = BytesIO(bytes(dedent(r'''

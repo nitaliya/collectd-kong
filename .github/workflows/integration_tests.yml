@@ -59,6 +59,18 @@ jobs:
 
       # - name: Install dependencies
       #   run: pip install tox
+
+      - name: List files
+        run: sudo ls /opt/
       
       - name: Run integration tests
         run: tox -e integration
+
+      - name: Print files
+        run: |
+          sudo cat /opt/collectd-plugin/kong_plugin.py
+          sudo cat /opt/collectd-plugin/kong/reporter.py
+          sudo cat /opt/collectd-plugin/kong/kong_state.py
+          sudo cat /opt/collectd-plugin/kong/requests/__init__.py
+          sudo cat /opt/collectd-plugin/kong/charset_normalizer/__init__.py
+          sudo cat /opt/collectd-plugin/kong/charset_normalizer/api.py
