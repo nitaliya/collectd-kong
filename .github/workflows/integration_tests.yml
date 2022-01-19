@@ -12,7 +12,7 @@ on:
 
 env:
   PYTHON_VERSION: 3.8.5
-  PIP_VERSION: 20.2.4
+  PIP_VERSION: 21.3.1
   REQUIREMENTS_PATH: "internal/buildscripts/packaging/tests/requirements.txt"
   RESULT_PATH: "~/testresults"
   GO_VERSION: 1.17.2
@@ -20,7 +20,7 @@ env:
 jobs:
   integration_tests:
     name: integration_tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v2
@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update && sudo apt install -yq python3-pip
-          sudo apt install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+          sudo apt-get install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
           curl https://pyenv.run | bash
           export PATH="~/.pyenv/bin:$PATH"
@@ -65,12 +65,3 @@ jobs:
       
       - name: Run integration tests
         run: tox -e integration
-
-      - name: Print files
-        run: |
-          sudo cat /opt/collectd-plugin/kong_plugin.py
-          sudo cat /opt/collectd-plugin/kong/reporter.py
-          sudo cat /opt/collectd-plugin/kong/kong_state.py
-          sudo cat /opt/collectd-plugin/kong/requests/__init__.py
-          sudo cat /opt/collectd-plugin/kong/charset_normalizer/__init__.py
-          sudo cat /opt/collectd-plugin/kong/charset_normalizer/api.py
