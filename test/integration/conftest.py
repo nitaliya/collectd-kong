@@ -39,8 +39,7 @@ def kong_image_and_version(request):
     version, shared_dict_line_number = request.param
     dockerfile = BytesIO(bytes(dedent(r'''
         FROM kong:{version}
-        RUN yum install -y epel-release
-        RUN dnf install python3
+        RUN yum install -y epel-release python3
         RUN alternatives --set python /usr/bin/python3
         RUN yum install -y python3-pip postgresql
         RUN pip3 install cqlsh
