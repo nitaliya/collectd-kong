@@ -39,10 +39,11 @@ def kong_image_and_version(request):
     version, shared_dict_line_number = request.param
     dockerfile = BytesIO(bytes(dedent(r'''
         FROM kong:{version}
-        RUN python --version
         RUN yum install -y epel-release
-        RUN yum install -y python-pip postgresql
-        RUN pip install cqlsh
+        RUN dnf install python3
+        RUN alternatives --set python /usr/bin/python3
+        RUN yum install -y python3-pip postgresql
+        RUN pip3 install cqlsh
         WORKDIR /usr/local/share/lua/5.1/kong
         RUN sed -i '{line_num}ilua_shared_dict kong_signalfx_aggregation 10m;' templates/nginx_kong.lua
         RUN sed -i '{line_num}ilua_shared_dict kong_signalfx_locks 100k;' templates/nginx_kong.lua
