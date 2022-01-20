@@ -129,6 +129,7 @@ def verify_dimensions(datapoints, object_ids, status_codes):
                           ('cassandra:3', cs_env, kong_cs_env.copy())),
                          ids=('postgres', 'cassandra'))
 def test_full_scoping_and_metrics(collectd_kong, kong_image_and_version, db_image, db_env, kong_env):
+    print('Python Version: '.format(sys.version))
     kong_image, kong_version = kong_image_and_version
     postgres = 'postgres' in db_image
     config = dedent("""
