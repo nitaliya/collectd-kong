@@ -42,8 +42,8 @@ jobs:
           eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
 
-          pyenv install 3.5.3
-          pyenv local 3.5.3
+          pyenv install 3.8.10
+          pyenv global 3.8.10
           pip3 install tox
 
       # - name: setup pyenv
