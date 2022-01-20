@@ -26,11 +26,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Pull in kong-plugin-signalfx
-        run: |
-          git config --list
-          git submodule update --init --recursive --remote
-          git config --list
-          ls -la test/integration/sfx/
+        run: git submodule update --init --recursive --remote
 
       # - name: Install dependencies
       #   run: |
@@ -63,7 +59,7 @@ jobs:
       #   run: pip install tox
 
       - name: List files
-        run: sudo ls -la ~/usr/bin/
+        run: sudo ls -la /usr/bin/
       
       # - name: Run integration tests
       #   run: tox -e integration
