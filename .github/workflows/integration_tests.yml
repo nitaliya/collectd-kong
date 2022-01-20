@@ -59,7 +59,10 @@ jobs:
       #   run: pip install tox
 
       - name: List files
-        run: sudo ls -la /usr/bin/
+        run: | 
+          sudo ls -la /usr/bin/
+          which python
+          python --version
       
       # - name: Run integration tests
       #   run: tox -e integration
