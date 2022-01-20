@@ -28,13 +28,12 @@ jobs:
       - name: Pull in kong-plugin-signalfx
         run: |
           git submodule update --init --recursive --remote
-          python --version
-          pip --version
-          ls -la /usr/bin/
 
-      # - name: Install dependencies
-      #   run: |
-      #     pip install tox
+      - name: Install dependencies
+        run: |
+          sudo ln -sf python2 /urs/bin/python
+          ls -la /usr/bin/
+          pip install tox
       
       # - name: Run integration tests
       #   run: tox -e integration
