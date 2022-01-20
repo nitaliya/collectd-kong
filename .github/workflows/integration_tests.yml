@@ -32,8 +32,9 @@ jobs:
       - name: Install dependencies
         run: |
           sudo ln -sf python2 /usr/bin/python
-          ls -la /usr/bin/
+          python --version
+          pip --version
           pip install tox
       
-      # - name: Run integration tests
-      #   run: tox -e integration
+      - name: Run integration tests
+        run: tox -e integration
