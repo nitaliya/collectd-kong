@@ -6,6 +6,7 @@ from collectdtesting.collectd import run_collectd  # noqa
 from requests.exceptions import RequestException
 from requests import get, post
 import pytest
+import sys
 
 from .conftest import absjoin
 
