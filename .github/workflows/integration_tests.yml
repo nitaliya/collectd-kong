@@ -30,30 +30,11 @@ jobs:
           git submodule update --init --recursive --remote
           python --version
           pip --version
-
-      - name: Install dependencies
-        run: |
-          pip install tox
-
-      # - name: setup pyenv
-      #   id: pyenv_installation
-      #   uses: "gabrielfalcao/pyenv-action@v5"
-      #   with:
-      #     default: 3.7.5
-      #     command: |
-      #       pip install -U pip setuptools
-
-      # - name: Create virtualenv for python 3.7.5
-      #   run: pyenv local 3.7.5 && python3 -mvenv .venv375
+          ls -la /usr/bin/
 
       # - name: Install dependencies
-      #   run: pip install tox
-
-      # - name: List files
-      #   run: | 
-      #     sudo ls -la /usr/bin/
-      #     which python
-      #     python --version
+      #   run: |
+      #     pip install tox
       
-      - name: Run integration tests
-        run: tox -e integration
+      # - name: Run integration tests
+      #   run: tox -e integration
