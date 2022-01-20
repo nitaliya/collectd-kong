@@ -40,9 +40,9 @@ def kong_image_and_version(request):
     dockerfile = BytesIO(bytes(dedent(r'''
         FROM kong:{version}
         RUN yum install -y epel-release python3
-        RUN alternatives --set python /usr/bin/python3
         RUN yum install -y python3-pip postgresql
         RUN pip3 install cqlsh
+        RUN rm -f /usr/bin/python && ln -s /usr/bin/python /usr/bin/python3
         WORKDIR /usr/local/share/lua/5.1/kong
         RUN sed -i '{line_num}ilua_shared_dict kong_signalfx_aggregation 10m;' templates/nginx_kong.lua
         RUN sed -i '{line_num}ilua_shared_dict kong_signalfx_locks 100k;' templates/nginx_kong.lua
