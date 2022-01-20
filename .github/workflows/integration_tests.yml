@@ -40,11 +40,10 @@ jobs:
 
           pyenv install 3.5.3
           pyenv local 3.5.3
-          ls -la /usr/bin/
           pip --version
           pip3 -V
           python --version
-          pip3 install tox
+          pip install tox
       
       - name: Run integration tests
         run: tox -e integration
