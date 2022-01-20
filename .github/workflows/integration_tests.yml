@@ -61,7 +61,7 @@ jobs:
       #   run: pip install tox
 
       - name: List files
-        run: sudo ls /opt/
+        run: sudo ls -la ~/
       
       - name: Run integration tests
         run: tox -e integration
