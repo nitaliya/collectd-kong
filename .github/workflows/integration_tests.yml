@@ -31,7 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo ln -sf python2 /urs/bin/python
+          sudo ln -sf python2 /usr/bin/python
           ls -la /usr/bin/
           pip install tox
       
