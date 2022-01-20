@@ -43,9 +43,7 @@ jobs:
           pip --version
           pip3 -V
           python --version
-          pip install tox
-          which tox
-          export PATH="~/.pyenv/shims:$PATH"
+          pip3 install tox
       
       - name: Run integration tests
         run: tox -e integration
