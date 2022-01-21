@@ -35,16 +35,14 @@ jobs:
 
           curl https://pyenv.run | bash
           export PATH="~/.pyenv/bin:$PATH"
-          eval "$(pyenv init --path)"
+          eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
 
           pyenv install 3.5.3
-          pyenv local 3.5.3
+          pyenv global 3.5.3
           pip --version
           pip3 -V
           python --version
-          sudo apt update
-          sudo apt install -y tox
       
       - name: Run integration tests
         run: tox -e integration
