@@ -36,6 +36,8 @@ jobs:
           curl https://pyenv.run | bash
           exec "$SHELL"
 
+      - name: Install pyenv
+        run: |
           pyenv install 3.5.3
           pyenv local 3.5.3
           pip --version
