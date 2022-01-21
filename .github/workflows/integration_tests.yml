@@ -35,11 +35,11 @@ jobs:
 
           curl https://pyenv.run | bash
           export PATH="~/.pyenv/bin:$PATH"
-          eval "$(pyenv init --path)"
+          eval "$(pyenv init -)"
           eval "$(pyenv virtualenv-init -)"
 
-          pyenv install 3.8.10
-          pyenv local 3.8.10
+          pyenv install 3.5.3
+          pyenv local 3.5.3
           pip --version
           pip3 -V
           python --version
