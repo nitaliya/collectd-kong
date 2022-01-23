@@ -28,31 +28,27 @@ jobs:
         run: |
           git submodule update --init --recursive --remote
 
-      # - name: Install dependencies
-      #   run: |
-      #     sudo apt update && sudo apt install -yq python3-pip
-      #     sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+      - name: Install dependencies
+        run: |
+          sudo apt update && sudo apt install -yq python3-pip
+          sudo apt-get install -y build-essential libssl-dev zlib1g-dev \ 
+          libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \ 
+          libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev \ 
+          liblzma-dev python-openssl git
 
-      #     curl https://pyenv.run | bash
-      #     export PATH="~/.pyenv/bin:$PATH"
-      #     eval "$(pyenv init -)"
-      #     eval "$(pyenv virtualenv-init -)"
+          curl https://pyenv.run | bash
+          exec $SHELL
+          git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+          echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
+          exec $SHELL
 
-      #     pyenv install 3.5.3
-      #     pyenv global 3.5.3
-      #     pip --version
-      #     pip3 -V
-      #     python --version
-      #     pip3 install tox
-
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.5.3'
-          cache: 'pip'
-
-      - run: |
+          pyenv install 3.5.3
+          pyenv global 3.5.3
+          pyenv virtualenv 3.5.3 venv
+          pip --version
+          pip3 -V
           python --version
-          pip install tox
+          pip3 install tox
       
       # - name: Run integration tests
       #   run: tox -e integration
