@@ -34,10 +34,10 @@ jobs:
           sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 
           curl https://pyenv.run | bash
-          exec $SHELL
+          exec bash
           git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
           echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
-          exec $SHELL
+          exec bash
 
           pyenv install 3.5.3
           pyenv global 3.5.3
