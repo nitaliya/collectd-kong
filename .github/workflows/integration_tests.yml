@@ -45,14 +45,14 @@ jobs:
       #     python --version
       #     pip3 install tox
 
-      - name: Install python version
-        uses: gabrielfalcao/pyenv-action@v5
+      - uses: actions/setup-python@v2
         with:
-          default: 3.5.2
-          command: pip install -U pip  # upgrade pip after installing python
+          python-version: '3.5.2'
+          cache: 'pip'
 
-      - name: Install dependencies
-        run: pip install tox
+      - run: |
+          python --version
+          pip install tox
       
-      - name: Run integration tests
-        run: tox -e integration
+      # - name: Run integration tests
+      #   run: tox -e integration
