@@ -46,5 +46,5 @@ jobs:
           python --version
           pip3 install tox
       
-      # - name: Run integration tests
-      #   run: tox -e integration
+      - name: Run integration tests
+        run: tox -e integration
