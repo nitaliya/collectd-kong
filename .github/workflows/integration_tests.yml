@@ -49,10 +49,12 @@ jobs:
       - name: setup pyenv
         uses: "gabrielfalcao/pyenv-action@v5"
         with:
-          default: 3.5.7
+          default: 3.7.2
+          versions: 3.6.8, 3.5.7
 
       - name: Create virtualenv for python 3.5.7
         run: pyenv local 3.5.7 && python3 -mvenv .venv357
+        
       
       - name: Run integration tests
         run: tox -e integration
